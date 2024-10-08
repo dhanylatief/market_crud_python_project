@@ -6,14 +6,23 @@ PriceList = f'''
 Harga Apel = {price_apple}
 Harga Jeruk = {price_orange}
 Harga Anggur = {price_grape}'''
+#Item Stock
+stock_apple = 40
+stock_orange = 30
+stock_grape = 20
 #Input
-amount_apple = input("Jumlah apel yg dibeli: ")
-amount_orange = input("Jumlah jeruk yg dibeli: ")
-amount_grape = input("Jumlah anggur yg dibeli: ")
-#Convert to int
-amount_apple = int(amount_apple)
-amount_orange = int(amount_orange)
-amount_grape = int(amount_grape)
+amount_apple = int(input("Jumlah apel yg dibeli: "))
+while amount_apple > stock_apple:
+    print("Jumlah yang dimasukkan terlalu banyak")
+    amount_apple = int(input("Masukkan Jumlah Apel: "))
+amount_orange = int(input("Jumlah jeruk yg dibeli: "))
+while amount_orange > stock_orange:
+    print("Jumlah yang dimasukkan terlalu banyak")
+    amount_orange = int(input("Masukkan Jumlah jeruk: "))
+amount_grape = int(input("Jumlah anggur yg dibeli: "))
+while amount_grape > stock_grape:
+    print("Jumlah yang dimasukkan terlalu banyak")
+    amount_grape = int(input("Masukkan Jumlah anggur: "))
 #Price
 price_apple_total = price_apple*amount_apple
 price_orange_total = price_orange*amount_orange
@@ -28,12 +37,13 @@ print("Total belanja: ", total_all)
 money = input("Masukkan Jumlah Uang: ")
 money = float(money)
 if money >= 0:
+    while money < total_all:
+        money_difference = abs(money-total_all)
+        print("Uang anda kurang sebesar: ", abs(money_difference))
+        money = money+(float(input("Masukkan Jumlah Uang: ")))
     if money >= total_all:
         print("Terima kasih")
         if money > total_all:
             print("Uang kembali anda: ", money-total_all)
-    elif money < total_all:
-        print("Transaksi Anda Dibatalkan")
-        print("Uang anda kurang sebesar: ", abs(money-total_all))
 else:
     print("Input tidak valid")
